@@ -1268,5 +1268,6 @@ void AddCustomScripts()
     AddSC_lol_custom();
     AddSC_lol_event();
     AddSC_lol_codebox();
+	AddSC_boss_kobborg();
 #endif
 }
