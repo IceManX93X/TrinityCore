@@ -59,8 +59,8 @@ class boss_broggok : public CreatureScript
             void JustSummoned(Creature* summoned)
             {
                 summoned->setFaction(16);
-                summoned->SetFlag(UNIT_FIELD_FLAGS, UNIT_FLAG_NON_ATTACKABLE);
-                summoned->SetFlag(UNIT_FIELD_FLAGS, UNIT_FLAG_NOT_SELECTABLE);
+              //  summoned->SetFlag(UNIT_FIELD_FLAGS, UNIT_FLAG_NON_ATTACKABLE);
+              //  summoned->SetFlag(UNIT_FIELD_FLAGS, UNIT_FLAG_NOT_SELECTABLE);
                 summoned->CastSpell(summoned, SPELL_CLEAVE, false, 0, 0, me->GetGUID());
             }
 
@@ -102,7 +102,7 @@ class boss_broggok : public CreatureScript
                 {
                  //   instance->HandleGameObject(instance->GetData64(DATA_DOOR4), true);
                  //   instance->HandleGameObject(instance->GetData64(DATA_DOOR5), true);
-                 //   instance->SetData(TYPE_KOBBORG_EVENT, DONE);
+                    instance->SetData(TYPE_KOBBORG_EVENT, DONE);
                 }
             }
 
