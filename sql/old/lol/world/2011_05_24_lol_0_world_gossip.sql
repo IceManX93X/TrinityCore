@@ -1,0 +1,2 @@
+INSERT IGNORE INTO `gossip_menu_option` (`menu_id`,`id`,`option_icon`,`option_text`,`option_id`,`npc_option_npcflag`,`action_menu_id`,`action_poi_id`,`action_script_id`,`box_coded`,`box_money`,`box_text`) VALUES 
+(6647,0,3,'I would like to train further in the ways of the Light.',5,16,0,0,0,0,0,'');

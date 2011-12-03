@@ -1,0 +1,6 @@
+-- Restore old Values of 'Love is in the Air' Necklaces - don't forget to delete WDB folder!
+UPDATE `item_template` SET `ItemLevel`=226,`stat_type1`=45,`stat_value1`=74,`stat_type2`=7,`stat_value2`=63,`stat_type3`=5,`stat_value3`=43,`stat_type4`=32,`stat_value4`=41,`stat_type5`=43,`stat_value5`=21 WHERE `entry`=51804;
+UPDATE `item_template` SET `ItemLevel`=226,`stat_type1`=45,`stat_value1`=74,`stat_type2`=7,`stat_value2`=63,`stat_type3`=5,`stat_value3`=43,`stat_type4`=6,`stat_value4`=41,`stat_type5`=36,`stat_value5`=42 WHERE `entry`=51805;
+UPDATE `item_template` SET `ItemLevel`=226,`stat_type1`=4,`stat_value1`=42,`stat_type2`=7,`stat_value2`=94,`stat_type3`=12,`stat_value3`=41,`stat_type4`=13,`stat_value4`=43,`stat_type5`=31,`stat_value5`=42 WHERE `entry`=51806;
+UPDATE `item_template` SET `ItemLevel`=226,`stat_type1`=38,`stat_value1`=84,`stat_type2`=3,`stat_value2`=63,`stat_type3`=7,`stat_value3`=69,`stat_type4`=32,`stat_value4`=36,`stat_type5`=44,`stat_value5`=46 WHERE `entry`=51807;
+UPDATE `item_template` SET `ItemLevel`=226,`stat_type1`=4,`stat_value1`=65,`stat_type2`=7,`stat_value2`=93,`stat_type3`=32,`stat_value3`=36,`stat_type4`=31,`stat_value4`=45 WHERE `entry`=51808;

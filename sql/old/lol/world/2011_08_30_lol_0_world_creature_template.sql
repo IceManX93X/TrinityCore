@@ -1,0 +1,1 @@
+UPDATE `creature_template` SET `mechanic_immune_mask`=`mechanic_immune_mask`|0x1|0x2|0x10|0x40|0x200|0x400|0x1000|0x800000|0x4000000 WHERE `entry` IN (33988,33989,33136,33968);

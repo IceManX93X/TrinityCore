@@ -1,0 +1,2 @@
+UPDATE `creature_template` SET `AIName`='',`ScriptName`='npc_rejek_first_blood' WHERE `entry` IN (28086,28096,28110,28109);
+UPDATE `quest_template` SET `ReqSpellCast1`=0,`ReqSpellCast2`=0,`ReqSpellCast3`=0 WHERE `entry`=12734;

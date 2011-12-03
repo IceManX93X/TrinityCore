@@ -1,0 +1,2 @@
+-- Fix Loot of 'Captain Shely' NPC#27232 - should drop: Captain Shely's Rutters (37305) instead of: Apothecary's Burning Water (37304)
+UPDATE `creature_loot_template` SET `item`=37305 WHERE `entry`=27232 AND `item`=37304;

@@ -1,0 +1,1 @@
+UPDATE `quest_template` SET `RewRepValueId1`=7 WHERE `entry` IN (10477,10478);

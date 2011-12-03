@@ -1,0 +1,1 @@
+UPDATE `spell_dbc` SET `Effect1`=16,`EffectMiscValue1`=10855 WHERE `id`=38758;

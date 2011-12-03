@@ -1,0 +1,1 @@
+UPDATE `spell_proc_event` SET `procEx`=0x0010000, `ppmRate`=0 WHERE `entry`=64999;

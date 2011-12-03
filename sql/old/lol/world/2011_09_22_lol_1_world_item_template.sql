@@ -1,0 +1,1 @@
+UPDATE `item_template` SET `ScriptName`='item_chime_of_cleansing' WHERE `entry`=39572;

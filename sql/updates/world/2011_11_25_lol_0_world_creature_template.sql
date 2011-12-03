@@ -1,0 +1,3 @@
+UPDATE `creature_template` SET `unit_flags`=0x00008040 WHERE `entry` IN (26737,30519, 26734,30516);
+UPDATE `creature` SET `dynamicflags`=`dynamicflags`&~32 WHERE `id` IN (26734,30516,26735,30517,26736,30518,26737,30519,26746,30520,26761,30521);
+UPDATE `creature_template` SET `dynamicflags`=`dynamicflags`&~32 WHERE `entry` IN (26734,30516,26735,30517,26736,30518,26737,30519,26746,30520,26761,30521);
