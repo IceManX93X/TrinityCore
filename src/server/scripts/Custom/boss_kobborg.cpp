@@ -1,5 +1,4 @@
 #include "ScriptPCH.h"
-#include "blood_furnace.h"
 
 enum eEnums
 {
@@ -101,9 +100,9 @@ class boss_broggok : public CreatureScript
             {
                 if (instance)
                 {
-                    instance->HandleGameObject(instance->GetData64(DATA_DOOR4), true);
-                    instance->HandleGameObject(instance->GetData64(DATA_DOOR5), true);
-                    instance->SetData(TYPE_KOBBORG_EVENT, DONE);
+                 //   instance->HandleGameObject(instance->GetData64(DATA_DOOR4), true);
+                 //   instance->HandleGameObject(instance->GetData64(DATA_DOOR5), true);
+                 //   instance->SetData(TYPE_KOBBORG_EVENT, DONE);
                 }
             }
 
