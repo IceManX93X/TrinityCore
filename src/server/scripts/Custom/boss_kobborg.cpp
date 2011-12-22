@@ -1,6 +1,11 @@
 #include "ScriptPCH.h"
 #include "SpellAuraEffects.h"
 
+static Position Valkyr[] =
+{
+	{16217.67f, 16273.25f, 21.74f, 1.57f}
+};
+
 enum Spells
 {
     SPELL_CLEAVE       			= 33480,
@@ -14,7 +19,8 @@ enum Spells
 	SPELL_INCREASED_HEALTH  	= 23737,
 	SPELL_LIGHTNING_STRIKE		= 31971,
 	SPELL_EMPOWERED_SHADOWBOLT  = 69528,
-	SPELL_SUMMON_ARCAN_BURST	= 38171
+	SPELL_SUMMON_ARCAN_BURST	= 38171,
+	SPELL_FROSTFIRE_BOLT		= 71130
 };
 
 enum Yells
@@ -27,6 +33,11 @@ enum Yells
 enum Events
 {
 
+};
+
+enum Entrys
+{
+	ENTRY_NPC_VALKYR			  = 700006
 };
 
 class boss_kobborg : public CreatureScript
@@ -53,6 +64,7 @@ class boss_kobborg : public CreatureScript
 			uint32 EmpoweredShadowBolt_Timer;
 			uint32 IncreasedHealth_Timer; //Not in use
 			uint32 ArcaneBurst_Timer;
+			uint32 Summon_Timer;
 			
 			//Phase 2
             uint32 Cleave_Timer;
@@ -60,7 +72,6 @@ class boss_kobborg : public CreatureScript
             uint32 TidalCharm_Timer;
 			
 			//Phase 3
-			
 			uint32 BerserkAura_Timer;
 			uint32 LightningStrike_Timer;
 			
@@ -80,6 +91,7 @@ class boss_kobborg : public CreatureScript
 				EmpoweredShadowBolt_Timer = 2000;
 				IncreasedHealth_Timer = 0;			//Not in use
 				ArcaneBurst_Timer = 4000;
+				Summon_Timer = 4000;
 				
 				//Phase 2
 				BlisteringCold_Timer = 6000;
@@ -154,12 +166,25 @@ class boss_kobborg : public CreatureScript
 						EmpoweredShadowBolt_Timer = 3000;
 					} else EmpoweredShadowBolt_Timer -= diff;
 					
-					if (ArcaneBurst_Timer <= diff)
+				/*	if (ArcaneBurst_Timer <= diff)
 					{
 						DoCast(me, SPELL_SUMMON_ARCAN_BURST);
 						ArcaneBurst_Timer = 5000;
 					} else ArcaneBurst_Timer -= diff;
-						
+				*/ 		
+				
+					if (Summon_Timer <= diff)
+					{
+						for (uint8 i = 0; i < 4; i++)
+						{
+							if (i <= 4)
+							{
+								me->SummonCreature(ENTRY_NPC_VALKYR, Valkyr[i], TEMPSUMMON_CORPSE_DESPAWN , 0);                    
+								Summon_Timer = urand(5, 7) *IN_MILLISECONDS;
+							}
+						}
+					} else Summon_Timer -= diff;
+				
 				}
 				
 				if (Phase == 2)
@@ -230,7 +255,66 @@ class boss_kobborg : public CreatureScript
         };
 };
 
+class npc_valkyr : public CreatureScript
+{
+    public : 
+			npc_valkyr() : CreatureScript("npc_valkyr") { }
+			
+		CreatureAI* GetAI(Creature* creature) const
+		{
+			return new npc_valkyrAI (creature);
+		}
+		
+		struct npc_valkyrAI : public ScriptedAI
+        {
+
+			npc_valkyrAI(Creature* c) : ScriptedAI(c)
+            {
+				pInstance = c->GetInstanceScript();
+            }
+			
+			uint32 FrostFireBolt_Timer;
+			
+			InstanceScript* pInstance;
+
+            void Reset()
+            {
+				FrostFireBolt_Timer = 3000;
+	        }
+
+            void EnterCombat(Unit* /*who*/)
+            {
+           
+            }
+
+            void UpdateAI(const uint32 diff)
+            {
+                if (!UpdateVictim())
+                    return;
+				
+				if (FrostFireBolt_Timer <= diff)
+				{
+					DoCast(me->getVictim(), SPELL_FROSTFIRE_BOLT);
+					FrostFireBolt_Timer = 2000;
+				} else FrostFireBolt_Timer -= diff;
+				
+                DoMeleeAttackIfReady();
+            }
+			
+			void JustDied(Unit* /*Victim*/)
+			{
+			
+			}
+			
+			void KilledUnit(Unit* /*Victim*/)
+			{
+
+			}
+        };
+};
+
 void AddSC_boss_kobborg()
 {
     new boss_kobborg();
+	new npc_valkyr();
 }
